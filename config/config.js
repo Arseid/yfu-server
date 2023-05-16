@@ -1,7 +1,8 @@
 const firebase = require('firebase/compat/app');
 require('firebase/compat/firestore');
+const admin = require('firebase-admin');
 
-const firebaseConfig  = {
+const firebaseConfig = {
     apiKey: "AIzaSyDO1BV-DSM-aBekyWCWp3ppBSa2setwano",
     authDomain: "yfu-database.firebaseapp.com",
     projectId: "yfu-database",
@@ -13,4 +14,10 @@ const firebaseConfig  = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-module.exports = db;
+const serviceAccount = require('./yfu-database-firebase-adminsdk-n0u8r-ce01142de1.json');
+
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount)
+});
+
+module.exports = { db, admin };

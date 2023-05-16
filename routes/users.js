@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../config/config');
+const {db, admin} = require('../config/config');
 
 router.get('/', async (req, res) => {
     try {
@@ -69,7 +69,13 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     try {
         const { id } = req.params;
+
+        // Delete user from Firestore
         await db.collection('users').doc(id).delete();
+
+        // Delete user from Firebase Authentication
+        await admin.auth().deleteUser(id);
+
         res.sendStatus(204);
     } catch (error) {
         console.error('Error deleting user:', error);

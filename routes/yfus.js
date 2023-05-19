@@ -11,8 +11,8 @@ router.get('/', async (req, res) => {
         }));
         res.json(yfus);
     } catch (error) {
-        console.error('Error fetching clothes:', error);
-        res.status(500).json({ error: 'Failed to fetch clothes' });
+        console.error('Error fetching yfus:', error);
+        res.status(500).json({ error: 'Failed to fetch yfus' });
     }
 });
 

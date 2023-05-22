@@ -14,7 +14,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 
-const serviceAccount = require('./yfu-database-firebase-adminsdk-n0u8r-ce01142de1.json');
+const serviceAccount = require('./yfu-database-firebase-adminsdk-n0u8r-e7d92959a6.json');
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
